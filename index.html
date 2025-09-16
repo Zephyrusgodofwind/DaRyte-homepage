@@ -4,1157 +4,1263 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DaRyte – Powering the next generation of defense innovation</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 :root {
-  --primary-color: #0A2463;
-  --accent-color: #3A86FF;
-  --background-light: #F8F9FA;
-  --text-color: #2D3142;
-  --border-radius: 12px;
-  --purple-color: #8338ec;
-  --teal-color: #2ec4b6;
-  --pink-color: #ff6f91;
-  --orange-color: #f79824;
-  --dark-blue: #07142e;
-  --gradient-1: linear-gradient(135deg, var(--accent-color), var(--purple-color));
-  --gradient-2: linear-gradient(135deg, var(--teal-color), var(--accent-color));
-  --gradient-3: linear-gradient(135deg, var(--pink-color), var(--orange-color));
-  --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-  --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
-  --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
-  --transition: all 0.3s ease;
+  --primary: #0A2463;
+  --primary-light: #1e3a6f;
+  --accent: #3A86FF;
+  --accent-glow: #5294ff;
+  --purple: #8338ec;
+  --teal: #2ec4b6;
+  --pink: #ff6f91;
+  --orange: #f79824;
+  --dark: #0a0e27;
+  --light: #F8F9FA;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --text: #2D3142;
+  --text-light: #6c757d;
+  --radius: 24px;
+  --radius-sm: 16px;
 }
 
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0;
-  padding: 0;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: var(--text-color);
-  background-color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
 }
 
-a { 
-  text-decoration: none; 
-  color: inherit; 
-}
-
-/* Enhanced Navigation */
-header {
-  position: sticky; 
-  top: 0; 
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
-  overflow: visible;
-  transition: var(--transition);
-}
-
-header::after {
-  content: ""; 
-  position: absolute; 
-  bottom: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 3px;
-  background-image: linear-gradient(90deg, var(--accent-color), var(--teal-color), var(--purple-color), var(--pink-color));
-}
-
-nav {
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 1rem 2rem;
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
-}
-
-.nav-left { 
-  font-size: 1.8rem; 
-  font-weight: 800; 
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-logo {
-  width: 40px;
-  height: 40px;
-  background: var(--gradient-1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex; 
-  gap: 2rem; 
-  flex-wrap: wrap; 
-  align-items: center;
-}
-
-.nav-links a {
-  position: relative; 
-  font-size: 1rem; 
-  font-weight: 500; 
-  padding: 0.5rem 0;
-  transition: var(--transition);
-}
-
-.nav-links a::before {
-  content: "";
-  position: absolute;
-  bottom: -3px;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-color);
-  transition: var(--transition);
+  right: 0;
+  bottom: 0;
+  background:  
+    radial-gradient(circle at 20% 50%, rgba(58, 134, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(131, 56, 236, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(46, 196, 182, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
-.nav-links a:hover::before {
-  width: 100%;
+/* --- Typography --- */
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
+
+a { text-decoration: none; color: inherit; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* --- Global Components --- */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius);
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: var(--transition);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  will-change: transform, box-shadow;
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: all 0.6s ease;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-.btn-primary { 
-  background: var(--accent-color); 
-  color: #fff; 
-  border: none;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover { 
-  background: #2d68b5; 
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.btn-secondary:hover {
-  background: var(--primary-color);
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--purple));
   color: white;
-  transform: translateY(-2px);
+  border: none;
+  box-shadow: 0 4px 24px rgba(58, 134, 255, 0.4);
 }
 
-/* Announcement */
-.announcement {
-  background-image: linear-gradient(90deg, var(--accent-color), var(--purple-color), var(--pink-color), var(--teal-color));
-  color: #fff; 
-  text-align: center; 
-  padding: 0.5rem 1rem; 
-  font-size: 0.875rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.announcement::before {
-  content: "";
+.btn-primary::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: shine 3s infinite;
+  background: linear-gradient(135deg, var(--purple), var(--accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-@keyframes shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(58, 134, 255, 0.6);
 }
 
-.announcement a { 
-  color: #fff; 
-  font-weight: 600; 
-  text-decoration: underline;
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary span {
   position: relative;
   z-index: 1;
 }
 
-.announcement a:hover { text-decoration: none; }
-
-/* Enhanced Hero Section */
-.hero { 
-  background: var(--dark-blue); 
-  padding: 6rem 2rem 4rem; 
-  position: relative; 
-  overflow: hidden; 
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
+.btn-secondary {
+  background: var(--glass);
   color: white;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
 }
 
-.hero-container {
-  max-width: 1200px; 
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Header & Navigation --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+  background: rgba(10, 14, 39, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.announcement {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 50%, var(--teal) 100%);
+  background-size: 200% 100%;
+  animation: gradientShift 8s ease infinite;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+nav {
+  max-width: 1400px;
   margin: 0 auto;
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: space-between; 
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 3rem;
+  position: relative;
+}
+
+.nav-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
   z-index: 2;
 }
 
-.hero-content { 
-  flex: 1 1 500px; 
-}
-
-.hero-content h1 { 
-  font-size: 3.5rem; 
-  font-weight: 800; 
-  margin: 0 0 1.5rem; 
-  line-height: 1.2;
-}
-
-.hero-content p { 
-  max-width: 500px; 
-  margin-bottom: 2.5rem; 
-  font-size: 1.25rem; 
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-.hero-actions { 
-  display: flex; 
-  gap: 1.5rem; 
-  flex-wrap: wrap; 
-}
-
-.hero-graphic { 
-  flex: 1 1 400px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  position: relative;
-}
-
-.hero-graphic svg { 
-  width: 100%; 
-  max-width: 420px; 
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(58, 134, 255, 0.2));
-  animation: float 6s ease-in-out infinite;
-}
-
-.background-shapes {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  overflow: hidden; 
-  pointer-events: none; 
-  z-index: 1;
-}
-
-.background-shapes .shape { 
-  position: absolute; 
-  opacity: 0.85; 
-  filter: blur(1px);
-}
-
-.background-shapes .shape1 { 
-  width: 200px; 
-  height: 200px; 
-  background: linear-gradient(135deg, var(--accent-color), var(--teal-color)); 
-  top: 20px; 
-  left: 15%; 
-  border-radius: 50%; 
-  animation: float 9s ease-in-out infinite; 
-}
-
-.background-shapes .shape2 { 
-  width: 240px; 
-  height: 240px; 
-  background: linear-gradient(135deg, var(--purple-color), var(--pink-color)); 
-  top: 100px; 
-  right: 15%; 
-  border-radius: var(--border-radius); 
-  transform: rotate(45deg); 
-  animation: rotate 24s linear infinite; 
-}
-
-.background-shapes .shape3 { 
-  width: 180px; 
-  height: 180px; 
-  background: linear-gradient(135deg, var(--accent-color), var(--purple-color)); 
-  bottom: 40px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  border-radius: 50%; 
-  animation: float 12s ease-in-out infinite reverse; 
-}
-
-.background-shapes .shape4 { 
-  width: 200px; 
-  height: 200px; 
-  background: linear-gradient(135deg, var(--pink-color), var(--teal-color)); 
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); 
-  bottom: 80px; 
-  left: 8%; 
-  animation: float 10s ease-in-out infinite; 
-}
-
-.background-shapes .shape5 { 
-  width: 240px; 
-  height: 240px; 
-  background: linear-gradient(135deg, var(--teal-color), var(--purple-color)); 
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
-  top: 30px; 
-  right: 30%; 
-  animation: rotate 20s linear infinite; 
-}
-
-.background-shapes .shape6 { 
-  width: 260px; 
-  height: 260px; 
-  border: 8px solid var(--accent-color); 
-  border-top-color: var(--purple-color); 
-  border-right-color: var(--teal-color); 
-  border-bottom-color: var(--pink-color); 
-  border-left-color: var(--accent-color); 
-  border-radius: 50%; 
-  top: 160px; 
-  left: 60%; 
-  opacity: 0.5; 
-  animation: rotate 14s linear infinite; 
-}
-
-.background-shapes .shape7 { 
-  width: 180px; 
-  height: 180px; 
-  border: 6px dashed var(--teal-color); 
-  border-top-color: var(--pink-color); 
-  border-right-color: var(--purple-color); 
-  border-bottom-color: var(--accent-color); 
-  border-left-color: var(--teal-color); 
-  border-radius: 50%; 
-  top: 10px; 
-  left: 72%; 
-  opacity: 0.5; 
-  animation: rotate 20s linear infinite reverse; 
-}
-
-@keyframes float { 
-  0% { transform: translateY(0) rotate(0deg); } 
-  50% { transform: translateY(-25px) rotate(5deg); } 
-  100% { transform: translateY(0) rotate(0deg); } 
-}
-
-@keyframes rotate { 
-  from { transform: rotate(0deg); } 
-  to { transform: rotate(360deg); } 
-}
-
-.gradient-text { 
-  display: inline-block; 
-  -webkit-background-clip: text; 
-  -webkit-text-fill-color: transparent; 
-  background-size: 200% auto;
-  animation: gradientShift 3s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.gradient-blue { background-image: linear-gradient(45deg, var(--accent-color), var(--teal-color)); }
-.gradient-purple { background-image: linear-gradient(45deg, var(--pink-color), var(--purple-color)); }
-
-/* Enhanced Logo Cloud */
-.logo-cloud { 
-  padding: 4rem 2rem; 
-  background: #fff; 
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-cloud h3 { 
-  text-align: center; 
-  margin: 0 0 3rem; 
-  font-size: 1.75rem; 
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.logos-container {
-  overflow: hidden;
-  position: relative;
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
   width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
 }
 
-.logos-track {
-  display: flex;
-  width: calc(200px * 12);
-  animation: scrollLogos 30s linear infinite;
+.nav-logo:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
-.logos {
+.nav-links {
   display: flex;
   gap: 2rem;
-  padding: 0 1rem;
-}
-
-.logo {
-  padding: 1rem 2rem; 
-  border: 1px solid #e0e0e0; 
-  border-radius: var(--border-radius);
-  font-size: 1rem; 
-  font-weight: 600; 
-  color: #6c757d; 
-  background: #fafafa; 
-  min-width: 160px; 
-  text-align: center;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-  flex-shrink: 0;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 80px;
 }
 
-.logo:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
-
-@keyframes scrollLogos {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-200px * 6)); }
-}
-
-/* Enhanced Features Section */
-.features { 
-  padding: 6rem 2rem; 
-  background: var(--background-light); 
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
   position: relative;
-}
-
-.features::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a2463' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-.features h2 { 
-  text-align: center; 
-  margin-bottom: 4rem; 
-  font-size: 2.5rem; 
-  color: var(--primary-color);
-  font-weight: 800;
-  position: relative;
-  z-index: 1;
-}
-
-.feature-cards { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 2rem; 
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.feature-card {
-  background: #fff; 
-  border-radius: var(--border-radius); 
-  box-shadow: var(--shadow-sm);
-  padding: 2.5rem 2rem; 
-  flex: 1 1 260px; 
-  max-width: 350px; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: flex-start; 
-  transition: var(--transition);
-  position: relative;
+  padding: 0.5rem 0;
   overflow: hidden;
 }
 
-.feature-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 0;
-  background: linear-gradient(to bottom, var(--accent-color), var(--purple-color));
-  transition: height 0.5s ease;
-}
-
-.feature-card:hover::before {
-  height: 100%;
-}
-
-.feature-card:hover { 
-  transform: translateY(-10px); 
-  box-shadow: var(--shadow-lg);
-}
-
-.feature-icon {
-  width: 60px; 
-  height: 60px; 
-  border-radius: 50%;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.feature-cards .feature-card:nth-child(1) .feature-icon { background: var(--gradient-1); }
-.feature-cards .feature-card:nth-child(2) .feature-icon { background: var(--gradient-2); }
-.feature-cards .feature-card:nth-child(3) .feature-icon { background: var(--gradient-3); }
-
-.feature-icon svg { 
-  width: 28px; 
-  height: 28px; 
-  fill: #fff; 
-}
-
-.feature-card h3 { 
-  margin: 0 0 1rem; 
-  font-size: 1.5rem; 
-  color: var(--primary-color);
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
-}
-
-.feature-card p { 
-  margin: 0; 
-  font-size: 1.05rem; 
-  color: var(--text-color);
-  position: relative;
-  z-index: 1;
-}
-
-/* Enhanced Innovation Labs */
-.innovation { 
-  padding: 6rem 2rem; 
-  background: #fff; 
-  position: relative;
-}
-
-.innovation h2 { 
-  text-align: center; 
-  margin-bottom: 4rem; 
-  font-size: 2.5rem; 
-  color: var(--primary-color);
-  font-weight: 800;
-}
-
-.labs { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 2rem; 
-  justify-content: center;
-}
-
-.lab-card {
-  background: var(--background-light); 
-  border-radius: var(--border-radius); 
-  padding: 2.5rem 2rem;
-  box-shadow: var(--shadow-sm); 
-  flex: 1 1 280px; 
-  max-width: 320px; 
-  text-align: center; 
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.lab-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: var(--gradient-1);
-  transition: height 0.5s ease;
-}
-
-.lab-card:hover::before {
-  height: 100%;
-  opacity: 0.05;
-}
-
-.lab-card:hover { 
-  transform: translateY(-10px); 
-  box-shadow: var(--shadow-lg);
-}
-
-.lab-icon {
-  width: 70px; 
-  height: 70px; 
-  border-radius: 50%; 
-  margin: 0 auto 1.5rem;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.lab-card:nth-child(1) .lab-icon { background: var(--gradient-1); }
-.lab-card:nth-child(2) .lab-icon { background: var(--gradient-2); }
-.lab-card:nth-child(3) .lab-icon { background: var(--gradient-3); }
-
-.lab-icon svg { 
-  width: 32px; 
-  height: 32px; 
-  fill: #fff; 
-}
-
-.lab-card h3 { 
-  margin-top: 0; 
-  font-size: 1.5rem; 
-  color: var(--primary-color);
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
-}
-
-.lab-card p { 
-  font-size: 1.05rem; 
-  color: var(--text-color);
-  position: relative;
-  z-index: 1;
-}
-
-/* Enhanced Metrics Section */
-.metrics { 
-  padding: 6rem 2rem; 
-  background: var(--dark-blue);
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.metrics::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-.metrics-container { 
-  max-width: 900px; 
-  margin: 0 auto; 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 2rem; 
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.metric-card {
-  background: rgba(255, 255, 255, 0.1); 
-  border-radius: var(--border-radius); 
-  padding: 2.5rem 2rem;
-  box-shadow: var(--shadow-sm); 
-  flex: 1 1 200px; 
-  text-align: center; 
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.metric-card:hover { 
-  transform: translateY(-10px); 
-  box-shadow: var(--shadow-lg);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.metric-icon {
-  width: 60px; 
-  height: 60px; 
-  border-radius: 50%; 
-  margin: 0 auto 1.5rem; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  color: #fff; 
-  font-size: 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.metric-counter { 
-  font-size: 3rem; 
-  font-weight: 800; 
-  margin: 0; 
-  color: #fff;
-  font-feature-settings: "tnum";
-}
-
-.metric-card p { 
-  margin-top: 0.5rem; 
-  font-size: 1.1rem; 
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Enhanced Timeline */
-.timeline { 
-  padding: 6rem 2rem; 
-  background: var(--background-light); 
-  position: relative;
-}
-
-.timeline h2 { 
-  text-align: center; 
-  margin-bottom: 4rem; 
-  font-size: 2.5rem; 
-  color: var(--primary-color);
-  font-weight: 800;
-}
-
-.vertical-timeline {
-  max-width: 800px; 
-  margin: 0 auto; 
-  position: relative; 
-  border-left: 2px solid #e0e0e0; 
-  padding-left: 2rem;
-}
-
-.v-step { 
-  position: relative; 
-  padding: 2rem 0 2rem 2rem; 
-  transition: var(--transition);
-}
-
-.v-step::before {
-  content: ""; 
-  position: absolute; 
-  left: -14px; 
-  top: 40px; 
-  width: 20px; 
-  height: 20px; 
-  border-radius: 50%;
-  background: var(--gradient-1);
-  transition: var(--transition);
-}
-
-.v-step:hover::before {
-  transform: scale(1.2);
-}
-
-.v-step h4 { 
-  margin: 0 0 0.5rem; 
-  font-size: 1.4rem; 
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.v-step p { 
-  margin: 0; 
-  font-size: 1.1rem; 
-  color: var(--text-color);
-}
-
-/* Enhanced Events Carousel */
-.events { 
-  padding: 6rem 2rem; 
-  background: #fff; 
-  position: relative;
-}
-
-.events h2 { 
-  text-align: center; 
-  margin-bottom: 4rem; 
-  font-size: 2.5rem; 
-  color: var(--primary-color);
-  font-weight: 800;
-}
-
-.carousel-container {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.carousel {
-  position: relative; 
-  max-width: 100%; 
-  margin: 0 auto; 
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-md);
-}
-
-.slides { 
-  display: flex; 
-  transition: transform 0.5s ease; 
-}
-
-.slide {
-  min-width: 100%; 
-  padding: 3rem; 
-  background: var(--background-light);
-  border-radius: var(--border-radius); 
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide h3 { 
-  margin: 0 0 1rem; 
-  font-size: 1.8rem; 
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.slide p { 
-  margin: 0; 
-  font-size: 1.1rem; 
-  color: var(--text-color);
-  max-width: 600px;
-}
-
-.carousel-control {
-  position: absolute; 
-  top: 50%; 
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9); 
-  border: none;
-  color: var(--primary-color); 
-  font-size: 2rem; 
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer; 
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-  z-index: 10;
-}
-
-.carousel-control:hover {
-  background: var(--primary-color);
-  color: white;
-}
-
-.carousel-control.prev { left: -25px; }
-.carousel-control.next { right: -25px; }
-
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  gap: 0.5rem;
-}
-
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.indicator.active {
-  background: var(--accent-color);
-  transform: scale(1.2);
-}
-
-/* Enhanced Footer */
-footer { 
-  background: var(--dark-blue); 
-  color: #fff; 
-  padding: 4rem 2rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-.footer-container {
-  max-width: 1200px; 
-  margin: 0 auto;
-  display: flex; 
-  flex-direction: column; 
-  align-items: flex-start; 
-  gap: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-columns { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 3rem; 
-  margin-bottom: 3rem; 
-  width: 100%;
-}
-
-.footer-col { 
-  flex: 1 1 200px; 
-}
-
-.footer-col h4 { 
-  font-size: 1.2rem; 
-  margin-bottom: 1.5rem; 
-  color: #fff;
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.footer-col h4::after {
-  content: "";
+.nav-links a::before {
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
-  height: 3px;
-  background: var(--accent-color);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-.footer-col ul { 
-  list-style: none; 
-  padding: 0; 
-  margin: 0; 
+.nav-links a:hover {
+  color: white;
 }
 
-.footer-col ul li { 
-  margin-bottom: 0.75rem; 
+.nav-links a:hover::before {
+  transform: translateX(0);
 }
 
-.footer-col ul li a { 
-  color: #cdd2e0; 
-  font-size: 1rem; 
-  transition: var(--transition);
-  display: inline-block;
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 8rem 2rem 4rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 39, 0.8) 100%);
 }
 
-.footer-col ul li a:hover { 
-  color: #fff; 
-  transform: translateX(5px);
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
 }
 
-.footer-social { 
-  display: flex; 
-  gap: 1rem; 
-  margin-bottom: 2rem; 
+.floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.footer-social a {
-  width: 40px;
-  height: 40px;
+.shape {
+  position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: float 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent), transparent);
+  top: 10%;
+  left: -10%;
+}
+
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--purple), transparent);
+  top: 50%;
+  right: -5%;
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--teal), transparent);
+  bottom: 10%;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -30px) rotate(90deg); }
+  50% { transform: translate(-20px, 20px) rotate(180deg); }
+  75% { transform: translate(-30px, -20px) rotate(270deg); }
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-content h1 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--purple), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  animation: slideInRight 1s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-3d {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
 }
 
-.footer-social a:hover {
-  background: var(--accent-color);
-  transform: translateY(-5px);
-}
-
-.footer-social a svg { 
-  width: 20px; 
-  height: 20px; 
-  fill: #cdd2e0; 
-  transition: var(--transition);
-}
-
-.footer-social a:hover svg { 
-  fill: #fff; 
-}
-
-.footer-copy { 
-  font-size: 1rem; 
-  color: #cdd2e0; 
-  width: 100%;
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Back to top button */
-#back-to-top {
-  position: fixed; 
-  right: 20px; 
-  bottom: 20px; 
-  width: 50px; 
-  height: 50px;
-  background: var(--accent-color); 
+.orbit {
+  position: absolute;
+  border: 2px solid rgba(58, 134, 255, 0.2);
   border-radius: 50%;
-  color: #fff; 
-  display: flex; 
-  align-items: center; 
+  animation: rotate 20s linear infinite;
+  will-change: transform;
+}
+
+.orbit-1 { width: 100%; height: 100%; }
+.orbit-2 { width: 80%; height: 80%; animation-duration: 15s; animation-direction: reverse; }
+.orbit-3 { width: 60%; height: 60%; animation-duration: 10s; }
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.orbit-1.orbit-dot { background: linear-gradient(135deg, var(--accent), var(--purple)); box-shadow: 0 0 20px var(--accent); }
+.orbit-2.orbit-dot { background: linear-gradient(135deg, var(--purple), var(--teal)); box-shadow: 0 0 20px var(--purple); }
+.orbit-3.orbit-dot { background: linear-gradient(135deg, var(--teal), var(--pink)); box-shadow: 0 0 20px var(--teal); }
+
+.center-shield {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: 1.5rem; 
-  box-shadow: var(--shadow-md);
-  opacity: 0; 
-  pointer-events: none; 
-  transition: var(--transition); 
-  z-index: 999;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  box-shadow: 0 0 60px rgba(58, 134, 255, 0.6);
+  animation: pulse 3s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(58, 134, 255, 0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(58, 134, 255, 0.8); }
+}
+
+/* --- Partners Section --- */
+.partners {
+  padding: 4rem 2rem;
+  position: relative;
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.partners h3 {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partner-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, border-color;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(58, 134, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  color: white;
+}
+
+.partner-card:hover::before {
+  opacity: 1;
+}
+
+/* --- Features Section --- */
+.features {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.features h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.features h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 2px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  will-change: transform, border-color, box-shadow;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(131, 56, 236, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(58, 134, 255, 0.3);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.feature-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
+
+.feature-card:hover.feature-icon {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.feature-card h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.feature-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* --- Innovation Labs Section --- */
+.labs {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), transparent);
+  position: relative;
+}
+
+.labs h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.labs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lab-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  will-change: transform, border-color;
+}
+
+.lab-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.lab-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+}
+
+.lab-card:hover::after {
+  opacity: 1;
+}
+
+.lab-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, var(--purple), var(--teal));
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.lab-icon svg {
+  width: 50px;
+  height: 50px;
+  fill: white;
+}
+
+.lab-card:nth-child(2).lab-icon { animation-delay: -1.3s; }
+.lab-card:nth-child(3).lab-icon { animation-delay: -2.6s; }
+
+.lab-card h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.lab-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* --- Metrics Section --- */
+.metrics {
+  padding: 6rem 2rem;
+  position: relative;
+  background: rgba(10, 14, 39, 0.4);
+}
+
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.metric {
+  text-align: center;
+  position: relative;
   cursor: pointer;
 }
-#back-to-top.show { 
-  opacity: 1; 
-  pointer-events: auto; 
-}
-#back-to-top:hover { 
-  background: #2d68b5; 
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+
+.metric-circle {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  position: relative;
 }
 
-/* Reveal animations */
-.reveal { 
-  opacity: 0; 
-  transform: translateY(40px); 
-  transition: opacity 0.6s ease, transform 0.6s ease; 
-}
-.reveal.show { 
-  opacity: 1; 
-  transform: translateY(0); 
+.metric-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-/* Responsive design */
-@media (max-width: 900px) {
-  .hero-container { 
-    flex-direction: column; 
-    text-align: center; 
-  }
-  .hero-content, .hero-graphic { 
-    flex: 1 1 100%; 
-  }
-  .hero-content h1 { 
-    font-size: 2.5rem; 
-  }
-  .feature-cards, .labs, .pillars-container, .metrics-container, .team-grid { 
-    flex-direction: column; 
-    align-items: center; 
-  }
-  nav { 
-    flex-direction: column; 
-    align-items: flex-start; 
-  }
-  .nav-links { 
-    margin-top: 1rem; 
-    flex-direction: column;
-    width: 100%;
-    display: none;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: absolute;
-    right: 2rem;
-    top: 1.5rem;
-  }
-  .carousel-control {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-  .carousel-control.prev { left: 10px; }
-  .carousel-control.next { right: 10px; }
+.metric-svg circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
 }
 
-/* Mobile menu toggle */
-.menu-toggle {
+.metric-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.metric-progress {
+  stroke: url(#gradient);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.metric.in-view.metric-progress {
+  stroke-dashoffset: 110; /* Example value, can be set via JS */
+}
+
+.metric-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+}
+
+.metric-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* --- Timeline Section --- */
+.timeline {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.timeline h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--purple));
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+  padding-right: 3rem;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 50%;
+  padding-left: 3rem;
+}
+
+.timeline-content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  position: relative;
+  transition: all 0.3s ease;
+  will-change: transform, border-color, box-shadow;
+}
+
+.timeline-item:hover.timeline-content {
+  transform: scale(1.05);
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(58, 134, 255, 0.2);
+}
+
+.timeline-dot {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(58, 134, 255, 0.6);
+}
+
+.timeline-item:nth-child(odd).timeline-dot {
+  right: -15px;
+}
+.timeline-item:nth-child(even).timeline-dot {
+  left: -15px;
+}
+
+.timeline-content h4 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* --- Success Stories Section --- */
+.success {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, rgba(46, 196, 182, 0.1), transparent);
+  position: relative;
+}
+
+.success h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.stories-carousel {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.stories-track {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 1rem 0 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stories-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.stories-track::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.stories-track::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 4px;
+}
+
+.story-card {
+  flex: 0 0 350px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  scroll-snap-align: start;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  will-change: transform, border-color, box-shadow;
+}
+
+.story-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(58, 134, 255, 0.3);
+}
+
+.story-logo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.story-card h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.story-card.story-category {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.story-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* --- FAQ Section --- */
+.faq {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.faq h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.faq h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 2px;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-item[open] {
+  border-color: var(--accent);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.faq-question::-webkit-details-marker {
   display: none;
 }
 
-/* Loading animation */
-.loading-screen {
+.faq-chevron {
+  transition: transform 0.3s ease;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faq-item[open].faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-content p {
+  padding: 0 1.5rem 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+/* --- Newsletter Section --- */
+.newsletter {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #0a0e27, #1a1f3a);
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.1), transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 25s ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+.newsletter-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.newsletter h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.newsletter p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: white;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(58, 134, 255, 0.3);
+}
+
+/* --- Footer --- */
+footer {
+  background: var(--dark);
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand h3 {
+  font-size: 2rem;
+  background: linear-gradient(135deg, white, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+  will-change: transform, background, box-shadow;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(58, 134, 255, 0.4);
+}
+
+.footer-column h4 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 1rem;
+}
+
+.footer-column ul li a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Animations & Utilities --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: 0 8px 30px rgba(58, 134, 255, 0.4);
+  will-change: opacity, transform, box-shadow;
+}
+
+.back-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(58, 134, 255, 0.6);
+}
+
+.loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--dark-blue);
+  background: var(--dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1162,457 +1268,619 @@ footer::before {
   transition: opacity 0.5s ease;
 }
 
-.loading-logo {
-  width: 80px;
-  height: 80px;
-  background: var(--gradient-1);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 2rem;
-  animation: pulse 1.5s infinite alternate;
+.loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+.loader-circle {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(58, 134, 255, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+ .timeline-item,
+ .timeline-item:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 3rem;
+    padding-right: 0;
+  }
+ .timeline-line {
+    left: 15px;
+  }
+ .timeline-dot,
+ .timeline-item:nth-child(even).timeline-dot {
+    left: 0;
+  }
+ .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+ .nav-links { display: none; } 
+ .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+ .hero-actions {
+    justify-content: center;
+  }
+ .hero-visual {
+    margin-top: 3rem;
+  }
+ .features-grid,
+ .labs-container,
+ .metrics-container {
+    grid-template-columns: 1fr;
+  }
+ .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+ .footer-social {
+    justify-content: center;
+  }
+ .newsletter-form {
+    flex-direction: column;
+  }
 }
 </style>
 </head>
 <body>
-<!-- Loading Screen -->
-<div class="loading-screen">
-  <div class="loading-logo">DR</div>
+
+<div class="loader" id="loader">
+  <div class="loader-circle"></div>
 </div>
 
-<header>
-  <div class="announcement">Applications for Fall 2025 cohort are now open! <a href="#apply">Apply Now</a></div>
+<header id="header">
+  <div class="announcement">
+    🚀 Applications for Fall 2025 cohort are now open! Limited seats available.
+    <a href="#apply" style="color: white; font-weight: 600; margin-left: 0.5rem;">Apply Now →</a>
+  </div>
   <nav>
-    <div class="nav-left">
-      <div class="nav-logo">DR</div>
-      DaRyte
-    </div>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <a href="#" class="nav-logo">DaRyte</a>
     <div class="nav-links">
-      <a href="#program-pillars">Program</a>
+      <a href="#features">Features</a>
       <a href="#labs">Labs</a>
-      <a href="#events">Events</a>
-      <a href="#press">Press</a>
-      <a href="#team">Team</a>
-      <a href="#success-stories">Portfolio</a>
-      <a href="#apply" class="btn btn-primary">Apply</a>
+      <a href="#timeline">Journey</a>
+      <a href="#success">Portfolio</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply" class="btn btn-primary"><span>Apply Now</span></a>
     </div>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="background-shapes">
-    <div class="shape shape1"></div>
-    <div class="shape shape2"></div>
-    <div class="shape shape3"></div>
-    <div class="shape shape4"></div>
-    <div class="shape shape5"></div>
-    <div class="shape shape6"></div>
-    <div class="shape shape7"></div>
-  </div>
-  <div class="hero-container">
-    <div class="hero-content">
-      <h1>From <span class="gradient-text gradient-blue">Prototype</span> to <span class="gradient-text gradient-purple">Procurement</span>.</h1>
-      <p>DaRyte funds, houses, and guides defense startups through the complex landscape of government adoption. Build what matters for national security.</p>
-      <div class="hero-actions">
-        <a href="#apply" class="btn btn-primary">Apply to the Program</a>
-        <a href="#program-pillars" class="btn btn-secondary">Learn More</a>
+<main>
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
       </div>
     </div>
-    <div class="hero-graphic">
-      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
-        <path d="M256 16L480 96V256C480 392 372 480 256 496C140 480 32 392 32 256V96L256 16Z" fill="none" stroke="#3A86FF" stroke-width="8"/>
-        <g stroke="#3A86FF" stroke-width="3" fill="#3A86FF">
-          <circle cx="180" cy="140" r="4"/><circle cx="320" cy="120" r="4"/><circle cx="400" cy="220" r="4"/>
-          <circle cx="340" cy="300" r="4"/><circle cx="220" cy="340" r="4"/><circle cx="120" cy="260" r="4"/>
-          <line x1="180" y1="140" x2="320" y2="120"/><line x1="320" y1="120" x2="400" y2="220"/>
-          <line x1="400" y1="220" x2="340" y2="300"/><line x1="340" y1="300" x2="220" y2="340"/>
-          <line x1="220" y1="340" x2="120" y2="260"/><line x1="120" y1="260" x2="180" y2="140"/>
-          <line x1="180" y1="140" x2="400" y2="220"/><line x1="320" y1="120" x2="340" y2="300"/>
-          <line x1="120" y1="260" x2="320" y2="120"/><line x1="220" y1="340" x2="400" y2="220"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="logo-cloud">
-  <h3>Trusted by our strategic partners</h3>
-  <div class="logos-container">
-    <div class="logos-track">
-      <div class="logos">
-        <div class="logo">Ministry of Defence</div>
-        <div class="logo">DRDO</div>
-        <div class="logo">DPSU Partners</div>
-        <div class="logo">Indian Army</div>
-        <div class="logo">Indian Air Force</div>
-        <div class="logo">Indian Navy</div>
-        <!-- Duplicate for seamless loop -->
-        <div class="logo">Ministry of Defence</div>
-        <div class="logo">DRDO</div>
-        <div class="logo">DPSU Partners</div>
-        <div class="logo">Indian Army</div>
-        <div class="logo">Indian Air Force</div>
-        <div class="logo">Indian Navy</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="features reveal" id="advantage">
-  <h2>The DaRyte Advantage</h2>
-  <div class="feature-cards">
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 64 64"><path d="M32 4C30 8 28 12 24 14C20 16 16 18 16 22C16 24 17 26 18 28H46C47 26 48 24 48 22C48 18 44 16 40 14C36 12 34 8 32 4Z"/><path d="M18 28L16 50C16 55.523 20.477 60 26 60H38C43.523 60 48 55.523 48 50L46 28H18Z"/></svg></div>
-      <h3>Funding & Investment</h3>
-      <p>Seed capital, follow-on funding support, and access to our network of specialized defense venture capitalists.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 64 64"><rect x="12" y="24" width="40" height="28" rx="4"/><path d="M32 8L50 16V28C50 40 40 46 32 48C24 46 14 40 14 28V16L32 8Z"/></svg></div>
-      <h3>Secure Workspace</h3>
-      <p>Classified and unclassified office spaces, R&D labs, and testing facilities designed for sensitive projects.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 64 64"><polygon points="32 8 56 20 56 24 8 24 8 20 32 8"/><rect x="12" y="24" width="8" height="28"/><rect x="28" y="24" width="8" height="28"/><rect x="44" y="24" width="8" height="28"/><rect x="8" y="52" width="48" height="4"/></svg></div>
-      <h3>Government Gateway</h3>
-      <p>Direct mentorship from ex-defense personnel, guidance on tender processes (DAP, DPP), and facilitated meetings with key decision-makers.</p>
-    </div>
-  </div>
-</section>
-
-<section class="innovation reveal" id="labs">
-  <h2>Innovation Labs</h2>
-  <div class="labs">
-    <div class="lab-card">
-      <div class="lab-icon"><svg viewBox="0 0 64 64"><path d="M32 4c15.464 0 28 12.536 28 28s-12.536 28-28 28S4 47.464 4 32 16.536 4 32 4zM22 46l20-20M42 46L22 26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-      <h3>AI & ML Lab</h3>
-      <p>Work on mission-critical AI and machine learning models for autonomous systems, surveillance, and data analysis.</p>
-    </div>
-    <div class="lab-card">
-      <div class="lab-icon"><svg viewBox="0 0 64 64"><path d="M32 4l20 10v36L32 60 12 50V14L32 4z" fill="#fff"/><path d="M32 4l20 10v36L32 60 12 50V14L32 4z" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><path d="M22 24h20M22 34h20" stroke-width="4" stroke-linecap="round" fill="none"/></svg></div>
-      <h3>Drone Lab</h3>
-      <p>Develop, test, and deploy advanced unmanned aerial vehicles for reconnaissance, logistics, and defense applications.</p>
-    </div>
-    <div class="lab-card">
-      <div class="lab-icon"><svg viewBox="0 0 64 64"><path d="M32 8c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24S45.255 8 32 8z" stroke="#fff" stroke-width="4" fill="none"/><path d="M32 24a8 8 0 110 16 8 8 0 010-16z" fill="#fff"/><path d="M12 32h40" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg></div>
-      <h3>Cybersecurity Lab</h3>
-      <p>Strengthen critical infrastructure by crafting cutting-edge cyber defense solutions for networks and communications.</p>
-    </div>
-  </div>
-</section>
-
-<section class="metrics reveal" id="metrics">
-  <div class="metrics-container">
-    <div class="metric-card">
-      <div class="metric-icon">🚀</div>
-      <p class="metric-counter" data-target="50">0</p>
-      <p>Startups Funded</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-icon">💰</div>
-      <p class="metric-counter" data-target="200">0</p>
-      <p>Million INR Raised</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-icon">📄</div>
-      <p class="metric-counter" data-target="15">0</p>
-      <p>Patents Filed</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-icon">⚔️</div>
-      <p class="metric-counter" data-target="10">0</p>
-      <p>Defense Agencies</p>
-    </div>
-  </div>
-</section>
-
-<section class="timeline reveal" id="program-journey">
-  <h2>Program Journey</h2>
-  <div class="vertical-timeline">
-    <div class="v-step">
-      <h4>Apply</h4>
-      <p>Submit your application and pitch for evaluation.</p>
-    </div>
-    <div class="v-step">
-      <h4>Build</h4>
-      <p>Secure funding and develop in our classified facilities.</p>
-    </div>
-    <div class="v-step">
-      <h4>Deploy</h4>
-      <p>Test and validate your technology with defense partners.</p>
-    </div>
-    <div class="v-step">
-      <h4>Scale</h4>
-      <p>Navigate procurement to reach nationwide adoption.</p>
-    </div>
-  </div>
-</section>
-
-<section class="events reveal" id="events">
-  <h2>Community & Events</h2>
-  <div class="carousel-container">
-    <div class="carousel">
-      <button class="carousel-control prev" aria-label="Previous event">&#10094;</button>
-      <div class="slides">
-        <div class="slide">
-          <h3>Hackathon 2025</h3>
-          <p>A week-long hackathon tackling surveillance, AI and drone challenges. Collaborate with industry experts.</p>
-        </div>
-        <div class="slide">
-          <h3>Defence Expo</h3>
-          <p>Showcase your prototypes at the annual Defence Expo and connect with procurement officers and investors.</p>
-        </div>
-        <div class="slide">
-          <h3>Innovation Summit</h3>
-          <p>Join thought leaders and policymakers to discuss the future of defense technology and national security.</p>
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>From <span class="gradient-text">Prototype</span><br>to Procurement</h1>
+        <p>India's premier defense tech accelerator. We fund, mentor, and fast-track defense startups through the complex landscape of government adoption.</p>
+        <div class="hero-actions">
+          <a href="#apply" class="btn btn-primary"><span>Start Your Journey</span></a>
+          <a href="#features" class="btn btn-secondary">Explore Program</a>
         </div>
       </div>
-      <button class="carousel-control next" aria-label="Next event">&#10095;</button>
+      <div class="hero-visual">
+        <div class="hero-3d">
+          <div class="orbit orbit-1">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="orbit orbit-2">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="orbit orbit-3">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="center-shield">D</div>
+        </div>
+      </div>
     </div>
-    <div class="carousel-indicators">
-      <div class="indicator active"></div>
-      <div class="indicator"></div>
-      <div class="indicator"></div>
+  </section>
+
+  <section class="partners">
+    <h3>Strategic Partners & Collaborators</h3>
+    <div class="partners-grid">
+      <div class="partner-card">Ministry of Defence</div>
+      <div class="partner-card">DRDO</div>
+      <div class="partner-card">Indian Army</div>
+      <div class="partner-card">Indian Navy</div>
+      <div class="partner-card">Indian Air Force</div>
+      <div class="partner-card">DPSU Partners</div>
+    </div>
+  </section>
+
+  <section class="features reveal" id="features">
+    <h2>The DaRyte Advantage</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" role="img" aria-label="Funding Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21V19M12 5V3M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15ZM21 12H19M5 12H3M16.9497 7.05025L15.5355 8.46447M8.46447 15.5355L7.05025 16.9497M16.9497 16.9497L15.5355 15.5355M8.46447 8.46447L7.05025 7.05025" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Funding & Investment</h3>
+        <p>Access seed capital up to ₹2 Crore, follow-on funding support, and connections to specialized defense VCs. We take only 6-8% equity.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" role="img" aria-label="Secure Infrastructure Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 15V12M12 9H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Secure Infrastructure</h3>
+        <p>Work from classified facilities, advanced R&D labs, and testing grounds designed for sensitive defense projects.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" role="img" aria-label="Government Gateway Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 13.8169 21.5246 15.5247 20.6927 17M17 21L12.5 16.5M12.5 16.5L8 21M12.5 16.5V8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Government Gateway</h3>
+        <p>Direct mentorship from ex-defense personnel, procurement guidance, and facilitated meetings with key decision-makers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="labs reveal" id="labs">
+    <h2>Innovation Labs</h2>
+    <div class="labs-container">
+      <div class="lab-card">
+        <div class="lab-icon" role="img" aria-label="AI and Autonomy Lab Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>AI & Autonomy Lab</h3>
+        <p>Build mission-critical AI models for autonomous systems, surveillance, and battlefield intelligence.</p>
+      </div>
+      <div class="lab-card">
+        <div class="lab-icon" role="img" aria-label="Drone and UAV Lab Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 19L12 5M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Drone & UAV Lab</h3>
+        <p>Design, test, and deploy advanced unmanned systems for reconnaissance and tactical operations.</p>
+      </div>
+      <div class="lab-card">
+        <div class="lab-icon" role="img" aria-label="Cyber Defense Lab Icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12L11 14L15 10M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Cyber Defense Lab</h3>
+        <p>Develop next-gen cybersecurity solutions to protect critical infrastructure and networks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics reveal">
+    <div class="metrics-container">
+      <div class="metric">
+        <div class="metric-circle">
+          <svg class="metric-svg">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: var(--accent); stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: var(--purple); stop-opacity: 1" />
+              </linearGradient>
+            </defs>
+            <circle class="metric-bg" cx="75" cy="75" r="70"></circle>
+            <circle class="metric-progress" data-value="75" cx="75" cy="75" r="70"></circle>
+          </svg>
+          <div class="metric-value" data-target="50">0+</div>
+        </div>
+        <div class="metric-label">Startups Funded</div>
+      </div>
+      <div class="metric">
+        <div class="metric-circle">
+          <svg class="metric-svg">
+            <circle class="metric-bg" cx="75" cy="75" r="70"></circle>
+            <circle class="metric-progress" data-value="60" cx="75" cy="75" r="70"></circle>
+          </svg>
+          <div class="metric-value" data-target="200">0Cr</div>
+        </div>
+        <div class="metric-label">Total Investment</div>
+      </div>
+      <div class="metric">
+        <div class="metric-circle">
+          <svg class="metric-svg">
+            <circle class="metric-bg" cx="75" cy="75" r="70"></circle>
+            <circle class="metric-progress" data-value="85" cx="75" cy="75" r="70"></circle>
+          </svg>
+          <div class="metric-value" data-target="15">0+</div>
+        </div>
+        <div class="metric-label">Patents Filed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-circle">
+          <svg class="metric-svg">
+            <circle class="metric-bg" cx="75" cy="75" r="70"></circle>
+            <circle class="metric-progress" data-value="90" cx="75" cy="75" r="70"></circle>
+          </svg>
+          <div class="metric-value" data-target="10">0+</div>
+        </div>
+        <div class="metric-label">Defense Contracts</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline reveal" id="timeline">
+    <h2>Your Journey with DaRyte</h2>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Apply & Pitch</h4>
+          <p>Submit your application and present your defense tech innovation to our expert panel.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Build & Develop</h4>
+          <p>Access funding, secure facilities, and work with mentors to refine your technology.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Test & Validate</h4>
+          <p>Conduct field trials with defense partners and obtain necessary certifications.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Scale & Deploy</h4>
+          <p>Navigate procurement processes and achieve nationwide defense adoption.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="success reveal" id="success">
+    <h2>Success Stories</h2>
+    <div class="stories-carousel">
+      <div class="stories-track">
+        <div class="story-card">
+          <div class="story-logo">A</div>
+          <h3>AeroShield Labs</h3>
+          <div class="story-category">Autonomous Defense</div>
+          <p>Developed AI-powered UAV swarm defense systems. Now deployed across 5 military bases with ₹50Cr in contracts.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-logo">C</div>
+          <h3>CyberFort</h3>
+          <div class="story-category">Cybersecurity</div>
+          <p>Built quantum-resistant encryption for military networks. Protecting critical infrastructure nationwide.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-logo">O</div>
+          <h3>OrbitX</h3>
+          <div class="story-category">Space Tech</div>
+          <p>Launched nano-satellites for border surveillance. Partnership with ISRO for next-gen monitoring.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-logo">D</div>
+          <h3>DefComm</h3>
+          <div class="story-category">Communications</div>
+          <p>Engineered secure battlefield communication systems. Active deployment in high-altitude regions.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-logo">S</div>
+          <h3>SkyWatch AI</h3>
+          <div class="story-category">AI Surveillance</div>
+          <p>Real-time threat detection using computer vision. Processing 10TB daily across border checkpoints.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq reveal" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>What kinds of startups do you fund?</span>
+          <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="faq-answer-content">
+          <p>We fund early-stage startups working on dual-use and defense-specific technologies, including but not limited to: autonomous systems (UAVs, UGVs), AI/ML for battlefield intelligence, cybersecurity, secure communications, advanced materials, and space technology.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>How much equity do you take?</span>
+          <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="faq-answer-content">
+          <p>Our standard deal is for 6-8% equity in exchange for seed funding up to ₹2 Crore, access to our secure facilities, intensive mentorship from defense experts, and our unparalleled government and industry network. Terms can be flexible based on the startup's stage and needs.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>Is the program residential?</span>
+          <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="faq-answer-content">
+          <p>While the program is not strictly residential, we require founders to spend significant time on-site at our secure facilities in New Delhi. This is crucial for leveraging our R&D labs, mentorship sessions, and collaborative opportunities with defense personnel.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>Who can apply?</span>
+          <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="faq-answer-content">
+          <p>We welcome applications from teams and founders registered in India. We look for deep technical expertise, a clear understanding of the defense problem they are solving, and a prototype or MVP that demonstrates their innovative approach.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="newsletter reveal" id="newsletter-signup">
+    <div class="newsletter-content">
+      <h2>Stay Ahead of the Curve</h2>
+      <p>Get exclusive insights on defense tech trends, cohort announcements, and DaRyte program updates delivered to your inbox.</p>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn btn-primary"><span>Subscribe</span></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer id="apply">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>DaRyte</h3>
+      <p>Building India's defense tech ecosystem through innovation, collaboration, and strategic partnerships.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V10H16V8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10H19V20H5V10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 4.00999C21.336 4.30299 20.62 4.50999 19.862 4.61999C20.635 4.14199 21.223 3.39199 21.5 2.50999C20.78 2.94299 19.984 3.27999 19.137 3.49999C18.461 2.78999 17.545 2.33999 16.518 2.33999C14.539 2.33999 12.924 3.95499 12.924 5.93299C12.924 6.21499 12.956 6.48999 13.017 6.75399C9.499 6.57999 6.356 4.94999 4.133 2.53999C3.784 3.14999 3.586 3.86899 3.586 4.63999C3.586 5.86899 4.229 6.95999 5.168 7.58399C4.573 7.56699 4.012 7.40899 3.534 7.14799V7.20399C3.534 8.91899 4.772 10.335 6.431 10.672C6.082 10.768 5.714 10.815 5.333 10.815C5.072 10.815 4.818 10.79 4.574 10.743C5.016 12.169 6.32 13.21 7.885 13.241C6.653 14.223 5.12 14.833 3.444 14.833C3.161 14.833 2.881 14.817 2.604 14.782C4.183 15.799 6.041 16.362 8.032 16.362C16.505 16.362 20.468 9.33999 20.468 3.22999C20.468 3.01999 20.463 2.81399 20.454 2.60599C21.258 2.02499 21.951 1.30799 22.5 0.499988" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19C12.3137 19 15 16.3137 15 13C15 9.68629 12.3137 7 9 7C5.68629 7 3 9.68629 3 13C3 16.3137 5.68629 19 9 19ZM9 19C9 19 11 21 15 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 10H19C18.4477 10 18 10.4477 18 11V13C18 13.5523 18.4477 14 19 14H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Program</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#labs">Innovation Labs</a></li>
+        <li><a href="#timeline">Journey</a></li>
+        <li><a href="#apply">Apply Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#success">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#press">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+      </ul>
     </div>
   </div>
-</section>
-
-<section class="cta reveal" id="apply">
-  <h2>Ready to Build the Future of Defense?</h2>
-  <p>Join DaRyte and turn your prototype into a field-tested solution for national security. Applications are open year-round.</p>
-  <a href="#apply-form" class="btn btn-primary">Apply Now</a>
-</section>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-columns">
-      <div class="footer-col">
-        <h4>Program</h4>
-        <ul>
-          <li><a href="#program-pillars">Overview</a></li>
-          <li><a href="#apply">Apply</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#success-stories">Portfolio</a></li>
-          <li><a href="mailto:info@daryte.in">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#metrics">Metrics</a></li>
-          <li><a href="#advantage">Advantages</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#terms">Terms of Service</a></li>
-          <li><a href="#privacy">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-social">
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6C1.12 6 0 4.88 0 3.5C0 2.12 1.12 1 2.49 1C3.86 1 4.98 2.12 4.98 3.5ZM0.22 8H4.76V24H0.22V8ZM8.58 8H13.04V10.13H13.11C13.74 9.13 15.03 8 17.11 8C21.3 8 24 10.59 24 16.07V24H19.46V16.83C19.46 14.29 18.92 12.63 16.72 12.63C14.89 12.63 13.86 13.86 13.41 14.99C13.24 15.43 13.2 16.03 13.2 16.63V24H8.66V8H8.58Z"/></svg></a>
-      <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.954-2.178-1.549-3.594-1.549-2.717 0-4.92 2.204-4.92 4.917 0 .39.045 .765 .127 1.124C7.728 8.087 4.1 6.128 1.671 3.149c-.427 .722-.666 1.561-.666 2.475 0 1.708 .87 3.213 2.188 4.096-.807 -.026-1.566-.247-2.229-.616v.061c0 2.386 1.698 4.374 3.946 4.828-.413 .111-.849 .171-1.296 .171-.314 0-.615 -.031-.916 -.088.631 1.953 2.445 3.376 4.6 3.416-1.68 1.319-3.809 2.105-6.102 2.105-.398 0-.79 -.023-1.17 -.067 2.179 1.397 4.768 2.215 7.557 2.215 9.054 0 14.001 -7.496 14.001 -13.986 0 -.209 0 -.423 -.014 -.637.961 -.695 1.8 -1.562 2.46 -2.548l-.047 -.02z"/></svg></a>
-      <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.371 0 0 5.371 0 12C0 17.303 3.438 21.799 8.205 23.542C8.805 23.652 9.025 23.304 9.025 22.999C9.025 22.737 9.015 22.042 9.009 21.125C5.672 21.824 4.968 19.387 4.968 19.387C4.422 17.965 3.633 17.575 3.633 17.575C2.545 16.832 3.714 16.848 3.714 16.848C4.918 16.932 5.554 18.092 5.554 18.092C6.631 19.905 8.361 19.373 9.047 19.075C9.158 18.298 9.455 17.783 9.787 17.499C7.116 17.204 4.344 16.164 4.344 11.543C4.344 10.225 4.797 9.16 5.573 8.336C5.444 8.037 5.054 6.772 5.682 5.077C5.682 5.077 6.669 4.756 8.999 6.371C9.955 6.077 10.983 5.933 12.003 5.927C13.023 5.933 14.053 6.077 15.012 6.371C17.338 4.756 18.322 5.077 18.322 5.077C18.953 6.772 18.563 8.037 18.434 8.336C19.215 9.16 19.659 10.225 19.659 11.543C19.659 16.176 16.882 17.199 14.203 17.488C14.656 17.865 15.067 18.602 15.067 19.756C15.067 21.389 15.053 22.657 15.053 22.999C15.053 23.305 15.268 23.658 15.881 23.542C20.648 21.799 24.083 17.303 24.083 12C24.083 5.371 18.712 0 12.083 0H12Z"/></svg></a>
-    </div>
-    <div class="footer-copy">&copy; 2025 DaRyte. All rights reserved.</div>
+  <div class="footer-bottom">
+    &copy; 2024 DaRyte. All Rights Reserved.
   </div>
 </footer>
 
-<div id="back-to-top">&#8679;</div>
+<a href="#top" class="back-top" aria-label="Back to top">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 19V5M5 12L12 5L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Hide loading screen
-  setTimeout(() => {
-    document.querySelector('.loading-screen').style.opacity = '0';
-    setTimeout(() => {
-      document.querySelector('.loading-screen').style.display = 'none';
-    }, 500);
-  }, 1500);
-
-  // Mobile menu toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
   
-  if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
-      this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+  // --- INITIALIZATION ---
+  initLoader();
+  initHeaderScroll();
+  initRevealAnimations();
+  initMetricCounters();
+  initFAQAccordion();
+  initBackToTopButton();
+  initNewsletterForm();
+
+  // --- MODULES ---
+
+  /**
+   * Handles the initial loading animation.
+   */
+  function initLoader() {
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      loader.classList.add('fade-out');
     });
   }
 
-  // Enhanced counter animation with easing
-  const counters = document.querySelectorAll('.metric-counter');
-  const counterObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = parseInt(counter.getAttribute('data-target'), 10);
-        let current = 0;
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
-        
-        function update() {
-          current += increment;
-          if (current > target) current = target;
-          
-          const progress = current / target;
-          const eased = easeOutQuart(progress);
-          counter.textContent = Math.round(target * eased);
-          
-          if (current < target) {
-            requestAnimationFrame(update);
-          }
+  /**
+   * Manages header style changes on scroll.
+   */
+  function initHeaderScroll() {
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+
+  /**
+   * Handles the "reveal on scroll" animations for sections.
+   */
+  function initRevealAnimations() {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
-        update();
-        counterObserver.unobserve(counter);
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  /**
+   * Animates the metric counters and progress circles when they enter the viewport.
+   */
+  function initMetricCounters() {
+    const metrics = document.querySelectorAll('.metric');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const metric = entry.target;
+          
+          // Animate numeric counter
+          const valueEl = metric.querySelector('.metric-value');
+          if (valueEl && valueEl.dataset.target) {
+            const target = parseInt(valueEl.dataset.target, 10);
+            let current = 0;
+            const increment = Math.max(1, Math.ceil(target / 100));
+            const suffix = valueEl.textContent.replace(/[0-9]/g, '');
+
+            const updateCounter = () => {
+              current += increment;
+              if (current >= target) {
+                valueEl.textContent = target + suffix;
+              } else {
+                valueEl.textContent = current + suffix;
+                requestAnimationFrame(updateCounter);
+              }
+            };
+            updateCounter();
+          }
+          
+          // Animate SVG circle
+          const circle = metric.querySelector('.metric-progress');
+          if (circle && circle.dataset.value) {
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (parseInt(circle.dataset.value, 10) / 100) * circumference;
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = circumference;
+            setTimeout(() => {
+              circle.style.strokeDashoffset = offset;
+            }, 100);
+          }
+          
+          observer.unobserve(metric);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    metrics.forEach(metric => {
+      observer.observe(metric);
+    });
+  }
+
+  /**
+   * Manages the smooth open/close animation for the FAQ accordion.
+   */
+  function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const summary = item.querySelector('.faq-question');
+      const content = item.querySelector('.faq-answer-content');
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        if (item.hasAttribute('open')) {
+          content.style.maxHeight = '0px';
+          item.addEventListener('transitionend', () => {
+            item.removeAttribute('open');
+          }, { once: true });
+        } else {
+          faqItems.forEach(otherItem => {
+            if (otherItem.hasAttribute('open')) {
+              const otherContent = otherItem.querySelector('.faq-answer-content');
+              otherContent.style.maxHeight = '0px';
+              otherItem.addEventListener('transitionend', () => {
+                otherItem.removeAttribute('open');
+              }, { once: true });
+            }
+          });
+
+          item.setAttribute('open', '');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+  
+  /**
+   * Manages the visibility of the "Back to Top" button.
+   */
+  function initBackToTopButton() {
+    const backTopBtn = document.querySelector('.back-top');
+    if (!backTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backTopBtn.classList.add('show');
+      } else {
+        backTopBtn.classList.remove('show');
       }
     });
-  }, { threshold: 0.5 });
-  
-  counters.forEach(counter => counterObserver.observe(counter));
+  }
 
-  // Enhanced reveal animation with staggered delay
-  const revealElems = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Add staggered delay based on element index
-        setTimeout(() => {
-          entry.target.classList.add('show');
-        }, index * 100);
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  revealElems.forEach(el => revealObserver.observe(el));
-
-  // Enhanced carousel with indicators
-  document.querySelectorAll('.carousel').forEach(carousel => {
-    const slides = carousel.querySelector('.slides');
-    const slideCount = slides.children.length;
-    let index = 0;
-    let autoPlayInterval;
-    
-    const prevBtn = carousel.querySelector('.prev');
-    const nextBtn = carousel.querySelector('.next');
-    const indicators = carousel.parentElement.querySelectorAll('.indicator');
-    
-    function goTo(idx) {
-      index = (idx + slideCount) % slideCount;
-      slides.style.transform = 'translateX(' + (-index * 100) + '%)';
-      
-      // Update indicators
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
+  /**
+   * Handles the newsletter form submission.
+   */
+  function initNewsletterForm() {
+    const form = document.getElementById('newsletter-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for subscribing!');
+        form.reset();
       });
     }
-    
-    function startAutoPlay() {
-      autoPlayInterval = setInterval(() => goTo(index + 1), 5000);
-    }
-    
-    function stopAutoPlay() {
-      clearInterval(autoPlayInterval);
-    }
-    
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-      stopAutoPlay();
-      goTo(index - 1);
-      startAutoPlay();
-    });
-    
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-      stopAutoPlay();
-      goTo(index + 1);
-      startAutoPlay();
-    });
-    
-    // Add click events to indicators
-    indicators.forEach((indicator, i) => {
-      indicator.addEventListener('click', () => {
-        stopAutoPlay();
-        goTo(i);
-        startAutoPlay();
-      });
-    });
-    
-    // Start autoplay
-    startAutoPlay();
-    
-    // Pause on hover
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
-  });
+  }
 
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const headerOffset = 100;
-        const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Scroll effects
-  const headerEl = document.querySelector('header');
-  const backToTop = document.getElementById('back-to-top');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      headerEl.classList.add('scrolled');
-    } else {
-      headerEl.classList.remove('scrolled');
-    }
-    
-    if (window.scrollY > 400) {
-      backToTop.classList.add('show');
-    } else {
-      backToTop.classList.remove('show');
-    }
-  });
-  
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Enhanced hover effects for cards
-  document.querySelectorAll('.feature-card, .lab-card, .metric-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-10px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-    });
-  });
 });
 </script>
+
 </body>
 </html>
