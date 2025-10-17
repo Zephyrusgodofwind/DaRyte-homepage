@@ -16,9 +16,11 @@
             --light: #f5f7ff;
             --dark: #1a237e;
             --text: #333333;
+            --text-light: #666;
             --gradient: linear-gradient(135deg, #2962ff 0%, #768fff 100%);
             --gradient-dark: linear-gradient(135deg, #0039cb 0%, #2962ff 100%);
             --shadow: 0 4px 20px rgba(41, 98, 255, 0.15);
+            --shadow-dark: 0 10px 30px rgba(41, 98, 255, 0.25);
             --radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -45,35 +47,43 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--dark);
         }
 
         p {
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
 
-        .container {
+       .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .section {
-            padding: 80px 0;
+       .section {
+            padding: 100px 0;
         }
 
-        .section-title {
+       .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
             position: relative;
-            color: var(--dark);
+        }
+        
+       .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
         }
 
-        .section-title:after {
+       .section-title:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
@@ -82,7 +92,7 @@
             border-radius: 2px;
         }
 
-        .btn {
+       .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -100,7 +110,7 @@
             overflow: hidden;
         }
 
-        .btn:before {
+       .btn:before {
             content: '';
             position: absolute;
             top: 0;
@@ -111,76 +121,77 @@
             transition: var(--transition);
         }
 
-        .btn:hover:before {
+       .btn:hover:before {
             left: 100%;
         }
 
-        .btn-primary {
+       .btn-primary {
             background: var(--primary);
             color: white;
             box-shadow: var(--shadow);
         }
 
-        .btn-primary:hover {
+       .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(41, 98, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-dark);
         }
 
-        .btn-secondary {
+       .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
 
-        .btn-secondary:hover {
+       .btn-secondary:hover {
             background: white;
             color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        .btn-accent {
+       .btn-accent {
             background: var(--secondary);
             color: white;
             box-shadow: var(--shadow);
         }
 
-        .btn-accent:hover {
+       .btn-accent:hover {
             background: var(--secondary-dark);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        .btn-large {
+       .btn-large {
             padding: 15px 40px;
             font-size: 1.1rem;
         }
 
         /* Navigation */
-        .navbar {
+       .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 15px 0;
             transition: var(--transition);
-            box-shadow: 0 2px 20px rgba(41, 98, 255, 0.1);
+            border-bottom: 1px solid rgba(41, 98, 255, 0.1);
         }
 
-        .navbar.scrolled {
+       .navbar.scrolled {
             padding: 10px 0;
-            box-shadow: 0 4px 20px rgba(41, 98, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(41, 98, 255, 0.1);
         }
 
-        .nav-container {
+       .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+       .logo {
             display: flex;
             align-items: center;
             color: var(--primary);
@@ -189,34 +200,35 @@
             font-weight: 700;
         }
 
-        .logo i {
+       .logo i {
             color: var(--secondary);
             margin-right: 10px;
         }
 
-        .nav-menu {
+       .nav-menu {
             display: flex;
             list-style: none;
         }
 
-        .nav-item {
-            margin-left: 30px;
+       .nav-item {
+            margin-left: 35px;
         }
 
-        .nav-link {
+       .nav-link {
             color: var(--dark);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             position: relative;
             font-size: 1rem;
+            padding: 5px 0;
         }
 
-        .nav-link:hover {
+       .nav-link:hover {
             color: var(--primary);
         }
 
-        .nav-link:after {
+       .nav-link:after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -228,11 +240,11 @@
             border-radius: 1px;
         }
 
-        .nav-link:hover:after {
+       .nav-link:hover:after {
             width: 100%;
         }
 
-        .hamburger {
+       .hamburger {
             display: none;
             cursor: pointer;
             background: none;
@@ -242,183 +254,245 @@
         }
 
         /* Hero Section */
-        .hero {
+       .hero {
             background: var(--gradient-dark);
             color: white;
-            padding: 180px 0 100px;
+            padding: 200px 0 120px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero:before {
+       .hero:before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L1000,0 L1000,1000 L0,1000 Z M0,0 C250,150 750,150 1000,0 L1000,1000 L0,1000 Z"></path></svg>');
-            background-size: cover;
+            top: -50%;
+            left: -25%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 10s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
 
-        .hero-content {
+       .hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+       .hero h1 {
+            font-size: 3.8rem;
             margin-bottom: 1.5rem;
             line-height: 1.1;
+            color: white;
         }
 
-        .hero p {
+       .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
+            color: white;
         }
 
-        .hero-badges {
+       .hero-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        .badge {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 10px 18px;
+       .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+       .badge:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .badge i {
+       .badge i {
             margin-right: 8px;
             color: var(--secondary);
         }
 
-        .hero-buttons {
+       .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         /* Stats Section */
-        .stats {
+       .stats {
             background: white;
             padding: 60px 0;
             box-shadow: 0 5px 25px rgba(41, 98, 255, 0.08);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            border-radius: var(--radius);
         }
 
-        .stats-container {
+       .stats-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
         }
 
-        .stat-item {
+       .stat-item {
             text-align: center;
             padding: 20px;
-            border-radius: var(--radius);
-            transition: var(--transition);
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
+       .stat-number {
+            font-size: 3rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
         }
 
-        .stat-label {
+       .stat-label {
             font-size: 1rem;
             color: var(--dark);
             font-weight: 600;
         }
 
-        /* Program Overview */
-        .program-overview {
+        /* Why Choose Us Section */
+       .why-us {
             background: var(--light);
         }
+        
+       .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+       .why-us-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(41, 98, 255, 0.1);
+        }
+        
+       .why-us-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-dark);
+        }
+        
+       .why-us-card.icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            background: var(--light);
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+       .why-us-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
 
-        .program-cards {
+        /* Program Overview */
+       .program-overview {
+            background: white;
+        }
+
+       .program-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        .program-card {
+       .program-card {
             background: white;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(41, 98, 255, 0.1);
+            display: flex;
+            flex-direction: column;
         }
 
-        .program-card:hover {
+       .program-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(41, 98, 255, 0.2);
+            box-shadow: var(--shadow-dark);
         }
 
-        .card-header {
+       .card-header {
             background: var(--gradient);
             color: white;
-            padding: 25px 20px;
+            padding: 30px 25px;
             text-align: center;
         }
-
-        .card-body {
-            padding: 25px;
+        
+       .card-header h3 {
+            color: white;
         }
 
-        .card-body ul {
+       .card-body {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+       .card-body ul {
             list-style: none;
             margin-bottom: 20px;
         }
 
-        .card-body li {
+       .card-body li {
             padding: 10px 0;
             padding-left: 30px;
             position: relative;
             border-bottom: 1px solid rgba(41, 98, 255, 0.1);
         }
 
-        .card-body li:last-child {
+       .card-body li:last-child {
             border-bottom: none;
         }
 
-        .card-body li:before {
-            content: '✓';
+       .card-body li:before {
+            content: '\f00c'; /* Font Awesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
             left: 0;
             color: var(--accent);
-            font-weight: bold;
             font-size: 1.1rem;
         }
 
         /* Specializations Grid */
-        .specializations {
-            background: white;
+       .specializations {
+            background: var(--light);
         }
 
-        .specializations-grid {
+       .specializations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .specialization-card {
+       .specialization-card {
             background: white;
             border-radius: var(--radius);
             overflow: hidden;
@@ -426,92 +500,188 @@
             transition: var(--transition);
             border: 1px solid rgba(41, 98, 255, 0.1);
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
-        .specialization-card:hover {
+       .specialization-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(41, 98, 255, 0.2);
+            box-shadow: var(--shadow-dark);
         }
 
-        .specialization-header {
+       .specialization-header {
             background: var(--gradient);
             color: white;
-            padding: 25px 20px;
+            padding: 30px 25px;
             text-align: center;
         }
-
-        .specialization-body {
-            padding: 25px;
+        
+       .specialization-header h3 {
+            color: white;
         }
 
-        .specialization-body ul {
+       .specialization-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+       .specialization-body p {
+            flex-grow: 1;
+        }
+
+       .specialization-body ul {
             list-style: none;
             margin-bottom: 20px;
         }
 
-        .specialization-body li {
+       .specialization-body li {
             padding: 8px 0;
             padding-left: 25px;
             position: relative;
         }
 
-        .specialization-body li:before {
-            content: '•';
+       .specialization-body li:before {
+            content: '\f105'; /* Font Awesome chevron-right */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
             left: 10px;
             color: var(--primary);
-            font-weight: bold;
+        }
+        
+        /* Testimonials Section */
+       .testimonials {
+            background: white;
+        }
+        
+       .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+       .testimonial-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(41, 98, 255, 0.1);
+        }
+        
+       .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+       .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+       .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+       .author-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+       .author-info span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+       .cta-section {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+       .cta-section h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+       .cta-section p {
+            color: white;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
         /* Course Page */
-        .course-page {
+       .course-page {
             display: none;
             padding-top: 100px;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .course-page.active {
+       .course-page.active {
             display: block;
         }
 
-        .course-hero {
+       .course-hero {
             background: var(--gradient-dark);
             color: white;
             padding: 60px 0;
         }
 
-        .course-hero-content {
-            max-width: 800px;
+       .course-hero-content h1 {
+            color: white;
+        }
+        
+       .course-hero-content p {
+            color: white;
+            opacity: 0.9;
         }
 
-        .course-meta {
+       .course-meta {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin: 20px 0;
             flex-wrap: wrap;
         }
 
-        .meta-item {
+       .meta-item {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
         }
+        
+       .meta-item i {
+            color: var(--secondary);
+        }
 
-        .course-body {
+       .course-body {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 40px;
-            padding: 40px 0;
+            padding: 60px 0;
         }
 
-        .course-main {
+       .course-main {
             background: white;
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
         }
 
-        .course-sidebar {
+       .course-sidebar {
             background: white;
             border-radius: var(--radius);
             padding: 30px;
@@ -522,11 +692,11 @@
             border: 1px solid rgba(41, 98, 255, 0.1);
         }
 
-        .sidebar-features {
+       .sidebar-features {
             margin: 20px 0;
         }
 
-        .feature-item {
+       .feature-item {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -534,11 +704,13 @@
             font-size: 0.9rem;
         }
 
-        .feature-item i {
+       .feature-item i {
             color: var(--accent);
+            width: 20px;
+            text-align: center;
         }
 
-        .module {
+       .module {
             background: var(--light);
             border-radius: var(--radius);
             margin-bottom: 20px;
@@ -546,7 +718,7 @@
             border: 1px solid rgba(41, 98, 255, 0.1);
         }
 
-        .module-header {
+       .module-header {
             padding: 20px;
             background: var(--primary);
             color: white;
@@ -556,40 +728,55 @@
             align-items: center;
             transition: var(--transition);
         }
-
-        .module-header:hover {
-            background: var(--primary-dark);
+        
+       .module-header h3 {
+            color: white;
+            margin: 0;
         }
 
-        .module-body {
+       .module-header:hover {
+            background: var(--primary-dark);
+        }
+        
+       .module-header i {
+            transition: transform 0.3s;
+        }
+        
+       .module-header.open i {
+            transform: rotate(180deg);
+        }
+
+       .module-body {
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: var(--transition);
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
         }
 
-        .module-body.open {
+       .module-body.open {
             padding: 20px;
             max-height: 1000px;
         }
 
-        .module-body ul {
+       .module-body ul {
             list-style: none;
         }
 
-        .module-body li {
+       .module-body li {
             padding: 10px 0;
             padding-left: 25px;
             position: relative;
             border-bottom: 1px solid rgba(41, 98, 255, 0.1);
         }
 
-        .module-body li:last-child {
+       .module-body li:last-child {
             border-bottom: none;
         }
 
-        .module-body li:before {
-            content: '▶';
+       .module-body li:before {
+            content: '\f144'; /* Font Awesome play icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
             left: 10px;
             color: var(--primary);
@@ -597,7 +784,7 @@
         }
 
         /* Back Button */
-        .back-btn {
+       .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -613,26 +800,26 @@
             text-decoration: none;
         }
 
-        .back-btn:hover {
+       .back-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateX(-5px);
         }
 
         /* Footer */
-        .footer {
+       .footer {
             background: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
         }
 
-        .footer-content {
+       .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
 
-        .footer-column h3 {
+       .footer-column h3 {
             color: var(--secondary);
             margin-bottom: 20px;
             font-size: 1.2rem;
@@ -640,7 +827,7 @@
             padding-bottom: 10px;
         }
 
-        .footer-column h3:after {
+       .footer-column h3:after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -650,15 +837,15 @@
             background: var(--secondary);
         }
 
-        .footer-links {
+       .footer-links {
             list-style: none;
         }
 
-        .footer-links li {
+       .footer-links li {
             margin-bottom: 12px;
         }
 
-        .footer-links a {
+       .footer-links a {
             color: #cbd5e0;
             text-decoration: none;
             transition: var(--transition);
@@ -667,17 +854,17 @@
             gap: 8px;
         }
 
-        .footer-links a:hover {
+       .footer-links a:hover {
             color: var(--secondary);
             transform: translateX(5px);
         }
 
-        .footer-links a i {
+       .footer-links a i {
             width: 16px;
             text-align: center;
         }
 
-        .footer-contact li {
+       .footer-contact li {
             display: flex;
             align-items: flex-start;
             gap: 10px;
@@ -685,19 +872,19 @@
             color: #cbd5e0;
         }
 
-        .footer-contact li i {
+       .footer-contact li i {
             color: var(--secondary);
             margin-top: 4px;
             flex-shrink: 0;
         }
 
-        .social-links {
+       .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
 
-        .social-links a {
+       .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -707,14 +894,15 @@
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            text-decoration: none;
         }
 
-        .social-links a:hover {
+       .social-links a:hover {
             background: var(--secondary);
             transform: translateY(-3px);
         }
 
-        .footer-bottom {
+       .footer-bottom {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid #2d3748;
@@ -722,7 +910,7 @@
             font-size: 0.9rem;
         }
 
-        .footer-logo {
+       .footer-logo {
             display: flex;
             align-items: center;
             color: white;
@@ -732,40 +920,44 @@
             margin-bottom: 15px;
         }
 
-        .footer-logo i {
+       .footer-logo i {
             color: var(--secondary);
             margin-right: 10px;
+        }
+        
+        /* Scroll Animations */
+       .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+       .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 992px) {
-            .stats-container {
+           .stats-container,.footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .program-cards {
+           .program-cards {
                 grid-template-columns: 1fr;
             }
-            
-            .course-body {
+           .course-body {
                 grid-template-columns: 1fr;
             }
-            
-            .course-sidebar {
+           .course-sidebar {
                 position: static;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .navbar {
+           .navbar {
                 padding: 15px 0;
             }
-            
-            .nav-menu {
+           .nav-menu {
                 position: fixed;
                 top: 70px;
                 left: -100%;
@@ -778,70 +970,59 @@
                 padding: 20px 0;
                 z-index: 999;
             }
-
-            .nav-menu.active {
+           .nav-menu.active {
                 left: 0;
             }
-
-            .nav-item {
+           .nav-item {
                 margin: 15px 0;
             }
-
-            .hamburger {
+           .hamburger {
                 display: block;
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
+           .hero h1 {
+                font-size: 2.8rem;
             }
-            
-            .hero p {
+           .hero p {
                 font-size: 1.1rem;
             }
-            
-            .footer-content {
+           .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
         }
 
         @media (max-width: 576px) {
-            .section {
+           .section {
                 padding: 60px 0;
             }
-            
-            .section-title {
-                font-size: 2rem;
+           .section-title {
+                font-size: 2.2rem;
             }
-            
-            .stats-container {
+           .stats-container {
                 grid-template-columns: 1fr;
             }
-            
-            .hero-buttons {
+           .hero-buttons {
                 flex-direction: column;
             }
-            
-            .btn {
+           .btn {
                 width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-vest"></i>
+                <i class="fas fa-user-tie"></i>
                 ReAttire
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#overview" class="nav-link">Program</a></li>
                 <li class="nav-item"><a href="#specializations" class="nav-link">Specializations</a></li>
-                <li class="nav-item"><a href="#career" class="nav-link">Career Support</a></li>
-                <li class="nav-item"><a href="#apply" class="nav-link">Apply</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Success Stories</a></li>
+                <li class="nav-item"><a href="#apply" class="nav-link btn btn-primary" style="color: white; padding: 8px 20px;">Apply</a></li>
             </ul>
             <button class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -849,14 +1030,12 @@
         </div>
     </nav>
 
-    <!-- Home Page -->
     <div id="homePage">
-        <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="container">
                 <div class="hero-content">
-                    <h1>ReAttire Career Transition Programme</h1>
-                    <p>Your Gateway to Corporate Success. A 3-month intensive program designed to transform military experience into corporate leadership.</p>
+                    <h1>Transition from Military Service to Corporate Leadership</h1>
+                    <p>Your Gateway to Corporate Success. A 3-month intensive program designed to transform military experience into a thriving civilian career.</p>
                     
                     <div class="hero-badges">
                         <div class="badge"><i class="fas fa-certificate"></i> Professional Certificate</div>
@@ -866,48 +1045,72 @@
                     </div>
                     
                     <div class="hero-buttons">
-                        <a href="#apply" class="btn btn-primary btn-large">Apply Now</a>
+                        <a href="#apply" class="btn btn-primary btn-large">Apply Now <i class="fas fa-arrow-right"></i></a>
                         <a href="#specializations" class="btn btn-secondary btn-large">View Specializations</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="stats">
-            <div class="container stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Month Program</div>
+        <div class="container">
+            <section class="stats fade-in-section">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Month Program</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Placement Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Veterans Trained</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Corporate Partners</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Placement Rate</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Veterans Trained</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Corporate Partners</div>
+            </section>
+        </div>
+        
+        <section class="section why-us fade-in-section" id="why">
+            <div class="container">
+                <h2 class="section-title">Why Choose ReAttire?</h2>
+                <p class="section-subtitle">We bridge the gap between military discipline and corporate dynamics, ensuring you're not just prepared, but poised for leadership.</p>
+                <div class="why-us-grid">
+                    <div class="why-us-card">
+                        <div class="icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Tailored Curriculum</h3>
+                        <p>Our program is specifically designed to translate your military skills into valuable corporate assets.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Expert Mentorship</h3>
+                        <p>Learn from industry veterans and successful military-to-corporate transitioners who've walked the path.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Corporate Network</h3>
+                        <p>Gain exclusive access to our network of corporate partners actively seeking to hire veterans.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Program Overview -->
-        <section class="section program-overview" id="overview">
+        <section class="section program-overview fade-in-section" id="overview">
             <div class="container">
                 <h2 class="section-title">Program Overview</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">ReAttire is a structured career transformation program that converts military experience into corporate success through specialized training, mentorship, and placement support.</p>
+                <p class="section-subtitle">ReAttire is a structured career transformation program that converts military experience into corporate success through specialized training, mentorship, and placement support.</p>
                 
                 <div class="program-cards">
                     <div class="program-card">
                         <div class="card-header">
-                            <h3>Foundation Program</h3>
+                            <h3>Month 1: Foundation Program</h3>
                         </div>
                         <div class="card-body">
-                            <p>1-month intensive foundation covering:</p>
+                            <p>An intensive foundation covering:</p>
                             <ul>
                                 <li>Corporate Culture & Mindset</li>
                                 <li>Professional Communication</li>
@@ -919,10 +1122,10 @@
                     
                     <div class="program-card">
                         <div class="card-header">
-                            <h3>Specialization Track</h3>
+                            <h3>Month 2: Specialization Track</h3>
                         </div>
                         <div class="card-body">
-                            <p>2-month specialization in your chosen field:</p>
+                            <p>Deep dive into your chosen field:</p>
                             <ul>
                                 <li>HR & Administration</li>
                                 <li>Operations Management</li>
@@ -934,7 +1137,7 @@
                     
                     <div class="program-card">
                         <div class="card-header">
-                            <h3>Career Launch</h3>
+                            <h3>Month 3: Career Launch</h3>
                         </div>
                         <div class="card-body">
                             <p>Final phase ensuring job readiness:</p>
@@ -950,11 +1153,10 @@
             </div>
         </section>
 
-        <!-- Specializations Section -->
-        <section class="section specializations" id="specializations">
+        <section class="section specializations fade-in-section" id="specializations">
             <div class="container">
                 <h2 class="section-title">Specialization Tracks</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Choose your career path with our specialized tracks designed to match your skills and interests with high-demand corporate roles.</p>
+                <p class="section-subtitle">Choose your career path with our specialized tracks designed to match your skills and interests with high-demand corporate roles.</p>
                 
                 <div class="specializations-grid">
                     <div class="specialization-card" onclick="showCourse('hr')">
@@ -969,7 +1171,7 @@
                                 <li>Office & Facility Management</li>
                                 <li>Compensation & Benefits</li>
                             </ul>
-                            <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: auto;">View Details</button>
                         </div>
                     </div>
                     
@@ -985,7 +1187,7 @@
                                 <li>Operations Data Analysis</li>
                                 <li>Quality Control & Improvement</li>
                             </ul>
-                            <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: auto;">View Details</button>
                         </div>
                     </div>
                     
@@ -1001,23 +1203,69 @@
                                 <li>Presales & Deal Closure</li>
                                 <li>Client Relationship Management</li>
                             </ul>
-                            <button class="btn btn-primary" style="width: 100%;">View Details</button>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: auto;">View Details</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Footer -->
+        <section class="section testimonials fade-in-section" id="testimonials">
+            <div class="container">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-subtitle">Hear from veterans who have successfully transitioned into corporate roles with our program.</p>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"ReAttire didn't just teach me corporate jargon; it taught me how to translate my leadership experience from the field into the boardroom. I landed a project manager role within a month of graduating."</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Author">
+                            <div class="author-info">
+                                <h4>John D., Army Veteran</h4>
+                                <span>Project Manager, Tech Corp</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The mentorship was invaluable. My mentor, a former Marine, helped me navigate the cultural differences and prepared me for every step of the interview process. I felt confident and ready."</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Author">
+                            <div class="author-info">
+                                <h4>Maria S., Marine Corps Veteran</h4>
+                                <span>Operations Analyst, Logistics Inc.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"I was worried my skills wouldn't apply. ReAttire showed me how my experience in logistics and personnel management was exactly what top companies were looking for in HR roles."</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=7" alt="Author">
+                            <div class="author-info">
+                                <h4>David C., Air Force Veteran</h4>
+                                <span>HR Generalist, Fortune 500 Co.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section fade-in-section" id="apply">
+            <div class="container">
+                <h2>Ready to Start Your Next Mission?</h2>
+                <p>Your skills are in demand. Let us help you translate them into a successful corporate career. Apply now to secure your spot in the next cohort.</p>
+                <a href="#" class="btn btn-accent btn-large">Apply to the Program <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+        
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-column">
                         <a href="#" class="footer-logo">
-                            <i class="fas fa-vest"></i>
+                            <i class="fas fa-user-tie"></i>
                             ReAttire
                         </a>
-                        <p style="color: #cbd5e0; margin-bottom: 20px;">From product-market fit to government partnerships, DaRyte is the right launchpad for your startup.</p>
+                        <p style="color: #cbd5e0; margin-bottom: 20px;">Empowering veterans to build successful corporate careers through targeted training and mentorship.</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1032,7 +1280,7 @@
                             <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
                             <li><a href="#overview"><i class="fas fa-chevron-right"></i> Program Overview</a></li>
                             <li><a href="#specializations"><i class="fas fa-chevron-right"></i> Specializations</a></li>
-                            <li><a href="#career"><i class="fas fa-chevron-right"></i> Career Support</a></li>
+                            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Success Stories</a></li>
                             <li><a href="#apply"><i class="fas fa-chevron-right"></i> Apply Now</a></li>
                         </ul>
                     </div>
@@ -1044,21 +1292,14 @@
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <div style="font-weight: 600;">Email</div>
-                                    <div>info@daryte.com</div>
+                                    <div>admissions@reattire.com</div>
                                 </div>
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
                                 <div>
                                     <div style="font-weight: 600;">Phone</div>
-                                    <div>+91 9310556877</div>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <div style="font-weight: 600;">Hours</div>
-                                    <div>Available 9 AM - 6 PM</div>
+                                    <div>+1 (800) 555-VETS</div>
                                 </div>
                             </li>
                         </ul>
@@ -1067,23 +1308,21 @@
                     <div class="footer-column">
                         <h3>Address</h3>
                         <div style="color: #cbd5e0; line-height: 1.6;">
-                            <p>677, Udyog Vihar Phase V,<br>
-                            Sector 19, Gurugram,<br>
-                            Haryana, India</p>
+                            <p>123 Freedom Lane,<br>
+                            Suite 100, Washington D.C.<br>
+                            USA</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="footer-bottom">
-                    <p>&copy; 2025 DaRyte. All rights reserved. Empowering the future of Defense & GovTech innovation.</p>
+                    <p>&copy; 2025 ReAttire. All rights reserved. A program dedicated to veteran success.</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Course Pages -->
     <div id="coursePage" class="course-page">
-        <!-- HR Course Page -->
         <div id="hrCourse" class="course-content">
             <section class="course-hero">
                 <div class="container">
@@ -1160,108 +1399,19 @@
                     <div class="course-sidebar">
                         <h3>Enroll in this Specialization</h3>
                         <div class="sidebar-features">
-                            <div class="feature-item">
-                                <i class="fas fa-play-circle"></i>
-                                <span>120+ on-demand videos</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-file-alt"></i>
-                                <span>25 downloadable resources</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-infinity"></i>
-                                <span>Full lifetime access</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Access on mobile and TV</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-trophy"></i>
-                                <span>Certificate of completion</span>
-                            </div>
+                            <div class="feature-item"><i class="fas fa-play-circle"></i> <span>120+ on-demand videos</span></div>
+                            <div class="feature-item"><i class="fas fa-file-alt"></i> <span>25 downloadable resources</span></div>
+                            <div class="feature-item"><i class="fas fa-infinity"></i> <span>Full lifetime access</span></div>
+                            <div class="feature-item"><i class="fas fa-mobile-alt"></i> <span>Access on mobile and TV</span></div>
+                            <div class="feature-item"><i class="fas fa-trophy"></i> <span>Certificate of completion</span></div>
                         </div>
                         <button class="btn btn-accent btn-large" style="width: 100%; margin-bottom: 15px;">Enroll Now</button>
-                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
                         <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">30-Day Money-Back Guarantee</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Footer for Course Page -->
-            <footer class="footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-column">
-                            <a href="#" class="footer-logo">
-                                <i class="fas fa-vest"></i>
-                                ReAttire
-                            </a>
-                            <p style="color: #cbd5e0; margin-bottom: 20px;">From product-market fit to government partnerships, DaRyte is the right launchpad for your startup.</p>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h3>Quick Links</h3>
-                            <ul class="footer-links">
-                                <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                                <li><a href="#overview"><i class="fas fa-chevron-right"></i> Program Overview</a></li>
-                                <li><a href="#specializations"><i class="fas fa-chevron-right"></i> Specializations</a></li>
-                                <li><a href="#career"><i class="fas fa-chevron-right"></i> Career Support</a></li>
-                                <li><a href="#apply"><i class="fas fa-chevron-right"></i> Apply Now</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h3>Contact Info</h3>
-                            <ul class="footer-contact">
-                                <li>
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Email</div>
-                                        <div>info@daryte.com</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Phone</div>
-                                        <div>+91 9310556877</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Hours</div>
-                                        <div>Available 9 AM - 6 PM</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h3>Address</h3>
-                            <div style="color: #cbd5e0; line-height: 1.6;">
-                                <p>677, Udyog Vihar Phase V,<br>
-                                Sector 19, Gurugram,<br>
-                                Haryana, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-bottom">
-                        <p>&copy; 2025 DaRyte. All rights reserved. Empowering the future of Defense & GovTech innovation.</p>
-                    </div>
-                </div>
-            </footer>
         </div>
 
-        <!-- Operations Course Page -->
         <div id="operationsCourse" class="course-content">
             <section class="course-hero">
                 <div class="container">
@@ -1338,105 +1488,106 @@
                     <div class="course-sidebar">
                         <h3>Enroll in this Specialization</h3>
                         <div class="sidebar-features">
-                            <div class="feature-item">
-                                <i class="fas fa-play-circle"></i>
-                                <span>110+ on-demand videos</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-file-alt"></i>
-                                <span>20 downloadable resources</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-infinity"></i>
-                                <span>Full lifetime access</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Access on mobile and TV</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-trophy"></i>
-                                <span>Certificate of completion</span>
-                            </div>
+                            <div class="feature-item"><i class="fas fa-play-circle"></i> <span>110+ on-demand videos</span></div>
+                            <div class="feature-item"><i class="fas fa-file-alt"></i> <span>20 downloadable resources</span></div>
+                            <div class="feature-item"><i class="fas fa-infinity"></i> <span>Full lifetime access</span></div>
+                            <div class="feature-item"><i class="fas fa-mobile-alt"></i> <span>Access on mobile and TV</span></div>
+                            <div class="feature-item"><i class="fas fa-trophy"></i> <span>Certificate of completion</span></div>
                         </div>
                         <button class="btn btn-accent btn-large" style="width: 100%; margin-bottom: 15px;">Enroll Now</button>
-                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
                         <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">30-Day Money-Back Guarantee</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Footer for Course Page -->
-            <footer class="footer">
+        </div>
+        
+        <div id="salesCourse" class="course-content">
+            <section class="course-hero">
                 <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-column">
-                            <a href="#" class="footer-logo">
-                                <i class="fas fa-vest"></i>
-                                ReAttire
-                            </a>
-                            <p style="color: #cbd5e0; margin-bottom: 20px;">From product-market fit to government partnerships, DaRyte is the right launchpad for your startup.</p>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
+                    <button class="back-btn" onclick="showHome()">
+                        <i class="fas fa-arrow-left"></i> Back to Specializations
+                    </button>
+                    <div class="course-hero-content">
+                        <h1>Sales & Business Development Specialization</h1>
+                        <p>Learn to drive revenue growth, build lasting client relationships, and excel in competitive markets with proven sales strategies.</p>
+                        <div class="course-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> 8 Weeks</div>
+                            <div class="meta-item"><i class="fas fa-video"></i> 130+ Lectures</div>
+                            <div class="meta-item"><i class="fas fa-chart-bar"></i> Advanced Level</div>
+                            <div class="meta-item"><i class="fas fa-star"></i> 4.9 Rating</div>
                         </div>
-                        
-                        <div class="footer-column">
-                            <h3>Quick Links</h3>
-                            <ul class="footer-links">
-                                <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                                <li><a href="#overview"><i class="fas fa-chevron-right"></i> Program Overview</a></li>
-                                <li><a href="#specializations"><i class="fas fa-chevron-right"></i> Specializations</a></li>
-                                <li><a href="#career"><i class="fas fa-chevron-right"></i> Career Support</a></li>
-                                <li><a href="#apply"><i class="fas fa-chevron-right"></i> Apply Now</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h3>Contact Info</h3>
-                            <ul class="footer-contact">
-                                <li>
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Email</div>
-                                        <div>info@daryte.com</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Phone</div>
-                                        <div>+91 9310556877</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <div style="font-weight: 600;">Hours</div>
-                                        <div>Available 9 AM - 6 PM</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h3>Address</h3>
-                            <div style="color: #cbd5e0; line-height: 1.6;">
-                                <p>677, Udyog Vihar Phase V,<br>
-                                Sector 19, Gurugram,<br>
-                                Haryana, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-bottom">
-                        <p>&copy; 2025 DaRyte. All rights reserved. Empowering the future of Defense & GovTech innovation.</p>
                     </div>
                 </div>
-            </footer>
+            </section>
+
+            <div class="container">
+                <div class="course-body">
+                    <div class="course-main">
+                        <div class="module">
+                            <div class="module-header">
+                                <h3>Course Curriculum</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="module-body">
+                                <h4>Module 1: Sales Fundamentals</h4>
+                                <ul>
+                                    <li>The Sales Funnel & Customer Journey</li>
+                                    <li>Consultative Selling Techniques</li>
+                                    <li>Lead Generation & Prospecting</li>
+                                    <li>CRM & Sales Technology</li>
+                                </ul>
+                                
+                                <h4>Module 2: Advanced Sales & Negotiation</h4>
+                                <ul>
+                                    <li>Territory & Account Management</li>
+                                    <li>Negotiation & Closing Strategies</li>
+                                    <li>Presentation & Pitching Skills</li>
+                                    <li>Handling Objections</li>
+                                </ul>
+                                
+                                <h4>Module 3: Business Development</h4>
+                                <ul>
+                                    <li>Strategic Partnership Building</li>
+                                    <li>Market Analysis & Expansion</li>
+                                    <li>Client Relationship Management</li>
+                                    <li>Sales Forecasting & Analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="module">
+                            <div class="module-header">
+                                <h3>Skills You Will Gain</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="module-body">
+                                <ul>
+                                    <li>Lead Generation & Qualification</li>
+                                    <li>CRM Software Proficiency (e.g., Salesforce)</li>
+                                    <li>Negotiation & Persuasion</li>
+                                    <li>Client Relationship Management</li>
+                                    <li>Sales Forecasting</li>
+                                    <li>Public Speaking & Presentation</li>
+                                    <li>Market Research</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-sidebar">
+                        <h3>Enroll in this Specialization</h3>
+                        <div class="sidebar-features">
+                            <div class="feature-item"><i class="fas fa-play-circle"></i> <span>130+ on-demand videos</span></div>
+                            <div class="feature-item"><i class="fas fa-file-alt"></i> <span>30 downloadable resources</span></div>
+                            <div class="feature-item"><i class="fas fa-infinity"></i> <span>Full lifetime access</span></div>
+                            <div class="feature-item"><i class="fas fa-mobile-alt"></i> <span>Access on mobile and TV</span></div>
+                            <div class="feature-item"><i class="fas fa-trophy"></i> <span>Certificate of completion</span></div>
+                        </div>
+                        <button class="btn btn-accent btn-large" style="width: 100%; margin-bottom: 15px;">Enroll Now</button>
+                        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">30-Day Money-Back Guarantee</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1448,15 +1599,17 @@
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             hamburger.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
+               ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
         });
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
             });
         });
         
@@ -1481,13 +1634,8 @@
             });
             
             // Show the selected course
-            if (courseType === 'hr') {
-                document.getElementById('hrCourse').style.display = 'block';
-            } else if (courseType === 'operations') {
-                document.getElementById('operationsCourse').style.display = 'block';
-            } else if (courseType === 'sales') {
-                document.getElementById('salesCourse').style.display = 'block';
-            }
+            const courseId = courseType + 'Course';
+            document.getElementById(courseId).style.display = 'block';
             
             window.scrollTo(0, 0);
         }
@@ -1504,13 +1652,18 @@
         moduleHeaders.forEach(header => {
             header.addEventListener('click', () => {
                 const moduleBody = header.nextElementSibling;
-                const icon = header.querySelector('i');
                 
+                // Close other open modules
+                moduleHeaders.forEach(otherHeader => {
+                    if (otherHeader!== header) {
+                        otherHeader.classList.remove('open');
+                        otherHeader.nextElementSibling.classList.remove('open');
+                    }
+                });
+
                 // Toggle current module
+                header.classList.toggle('open');
                 moduleBody.classList.toggle('open');
-                icon.className = moduleBody.classList.contains('open') 
-                    ? 'fas fa-chevron-up' 
-                    : 'fas fa-chevron-down';
             });
         });
         
@@ -1531,6 +1684,23 @@
                 }
             });
         });
+
+        // On-scroll animations
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
     </script>
 </body>
 </html>
